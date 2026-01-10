@@ -15,5 +15,5 @@ Feature: Complete Web Form
 
     Examples:
       | first | last  | job            |
-      | John  | Doe   | QA Engineer    |
-      | Jane  | Smith | Test Automation|
+      | Adam  | Tokus   | AI Engineer    |
+      | Yavuz  | Tokus | Test Automation|

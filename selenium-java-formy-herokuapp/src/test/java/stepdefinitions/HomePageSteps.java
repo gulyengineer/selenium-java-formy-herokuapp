@@ -1,13 +1,13 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import pages.FormPage;
 import pages.HomePage;
-import utils.DriverManager;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static utils.DriverManager.getDriver;
+import static utils.TestContext.setCurrentPage;
 
 public class HomePageSteps {
 
@@ -15,17 +15,14 @@ public class HomePageSteps {
 
     @Given("I am on the Formy home page")
     public void iAmOnTheFormyHomePage() {
-        WebDriver driver = DriverManager.getDriver();
-        homePage = new HomePage(driver);
-    }
-
-    @Then("the page header should be {string}")
-    public void thePageHeaderShouldBe(String expectedHeader) {
-        assertEquals(expectedHeader, homePage.getHeaderText());
+        homePage = new HomePage(getDriver());
+        setCurrentPage(homePage);
+        assertTrue(getDriver().getCurrentUrl().contains("formy-project"));
     }
 
     @When("I navigate to the Complete Web Form page")
     public void iNavigateToTheCompleteWebFormPage() {
         homePage.navigateToFormPage();
+        setCurrentPage(new FormPage(getDriver()));
     }
 }
