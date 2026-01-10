@@ -36,8 +36,8 @@ public class FormPage extends BasePage {
         waitForVisibility(driver,jobTitleLocator).sendKeys(jobTitle);
     }
 
-    public void submitForm() {
+    public SuccessPage submitForm() {
         waitForVisibility(driver,submitButtonLocator).click();
-        waitForUrlContains(driver,"thanks");
+        return new SuccessPage(driver);
     }
 }

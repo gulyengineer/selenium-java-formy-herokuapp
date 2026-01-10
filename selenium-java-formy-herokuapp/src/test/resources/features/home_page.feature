@@ -1,3 +1,4 @@
+@smoke
 Feature: Formy Home Page
 
   Scenario: Verify home page loads successfully

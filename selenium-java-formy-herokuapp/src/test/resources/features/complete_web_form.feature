@@ -1,3 +1,4 @@
+@smoke
 Feature: Complete Web Form
 
   As a user
