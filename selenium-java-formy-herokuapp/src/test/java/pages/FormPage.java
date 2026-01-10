@@ -3,14 +3,18 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static utils.WaitUtils.waitForUrlContains;
 import static utils.WaitUtils.waitForVisibility;
 
-public class FormPage {
+public class FormPage extends BasePage {
 
-    private final WebDriver driver;
+    private final By formLocator = By.className("form-group");
 
     public FormPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        // Wait until the Form page is actually loaded
+        waitForUrlContains(driver, "form");
+        waitForVisibility(driver,formLocator);
     }
 
     //locators
@@ -32,7 +36,8 @@ public class FormPage {
         waitForVisibility(driver,jobTitleLocator).sendKeys(jobTitle);
     }
 
-    public void submitForm() {
+    public SuccessPage submitForm() {
         waitForVisibility(driver,submitButtonLocator).click();
+        return new SuccessPage(driver);
     }
 }

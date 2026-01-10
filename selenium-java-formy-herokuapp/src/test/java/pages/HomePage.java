@@ -3,27 +3,19 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-
-    private final WebDriver driver;
-
+public class HomePage extends BasePage{
     // Constructor
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     // Locators
-    private By pageHeader = By.tagName("h1");
 
-    private By formLink = By.linkText("Complete Web Form");
-    private By dropdownLink = By.linkText("Dropdown");
-    private By autocompleteLink = By.linkText("Autocomplete");
+    private final By formLink = By.linkText("Complete Web Form");
+    private final By dropdownLink = By.linkText("Dropdown");
+    private final By autocompleteLink = By.linkText("Autocomplete");
 
     // Actions
-    public String getHeaderText() {
-        return driver.findElement(pageHeader).getText();
-    }
-
     public void navigateToFormPage() {
         driver.findElement(formLink).click();
     }
